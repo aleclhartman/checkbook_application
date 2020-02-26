@@ -17,15 +17,19 @@ def menu():
         user_choice = input("\n Your choice ")
 
     user_choice = int(user_choice)
+
     #working with valid user input
     while (user_choice in range(1, 5)):    
 
+        # user entered 1 - showing balance
         if user_choice == 1:
+            #defining show_balance()
             def show_balance():
                 filename = "transactions.txt"
                 balance = 0.00
                 beginning_balance = ["100.00"]
 
+                # if "transactions.txt" exists, read the lines and calculate balance
                 if path.exists(filename) == True:
                     with open(filename) as f:
                         entries = f.readlines()
@@ -34,7 +38,9 @@ def menu():
                             entry = float(entry)
                             balance += entry
                         balance = '${:,.2f}'.format(balance)
-                        print(f"\n Your current balance is {balance}")
+                        print(f"\n Your current balance is {balance}.")
+
+                # else, create "transactions.txt" with a starting balance of $100.00
                 else:
                     with open(filename, "w") as f:
                         for value in beginning_balance:
@@ -46,7 +52,7 @@ def menu():
                             value = float(value)
                             balance = value
                         balance = '${:,.2f}'.format(balance)
-                        print(f"\n Your current balance is {balance}")
+                        print(f"\n Your current balance is {balance}.")
 
             show_balance()
 
