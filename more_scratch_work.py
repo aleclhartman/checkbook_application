@@ -20,3 +20,20 @@ def show_balance():
 
 show_balance()
 
+def record_debit():
+    amount = input("Please enter the amount of the debit (withdraw): ")
+    filename = "transactions.txt"
+
+    if path.exists(filename) == True:
+        with open(filename, "a") as f:
+                for entry in entries:
+                    f.write("$" + str(float(amount)) + "\n")
+    else:
+        with open(filename, "w") as f:
+            f.write("$" + str(float(amount)) + "\n")
+
+record_debit()
+
+entries = [100, 20, 80, 220]
+balance = sum([entry for entry in entries])
+balance
