@@ -63,7 +63,7 @@ def menu():
             def record_debit():
                 balance = get_balance()
                 if balance == 0:
-                    print("\n You broke! Make a deposit before attempting to withdraw. Returning to menu...")
+                    print("\n You're broke! Make a deposit before attempting to withdraw. Returning to menu...")
                     menu()
                 amount = input("\n Please enter the amount of the debit: $")
                 amount = amount.replace(",", "")
