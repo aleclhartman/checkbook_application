@@ -73,7 +73,7 @@ menu()
         if user_choice == 2:
             def record_debit():
                 amount = input("\n Please enter the amount of the debit: $")
-                while ("," in amount
+                while (
                         or str(int(round(float(amount)))).isnumeric() == False
                         or float(amount) < 0.0
                         or abs(float(amount)) == 0.0
@@ -117,3 +117,11 @@ menu()
             record_credit()
 
             menu()
+
+
+# 10:40
+
+for character in amount:
+        if character.isalpha() == True:
+            print(f"\n {amount} is not a valid input. Please enter a positive number with a maximum of two decimal places.")
+            break
