@@ -1,3 +1,4 @@
+import decimal
 from os import path
 
 # welcoming user
@@ -61,10 +62,12 @@ def menu():
         if user_choice == 2:
             def record_debit():
                 amount = input("\n Please enter the amount of the debit: $")
-                while ("," in amount
-                        or float(amount) < 0.0
+                amount = amount.replace(',', "")
+                amount = amount.replace(' ', "")
+                while (amount.isalpha() == True
+                        or float(amount) < 0
                         or abs(float(amount)) == 0.0):
-                    print(f"\n {amount} is not a valid input. Please enter a positive number with no commas.")
+                    print(f"\n {amount} is not a valid input. Please enter a positive number with a maximum of two decimal places.")
                     amount = input("\n Please enter the amount of the debit: $")
 
                 filename = "transactions.txt"
@@ -83,10 +86,12 @@ def menu():
         if user_choice == 3:
             def record_credit():
                 amount = input("\n Please enter the amount of the credit: $")
-                while ("," in amount
-                        or float(amount) < 0.0
+                amount = amount.replace(',', "")
+                amount = amount.replace(' ', "")
+                while (amount.isalpha() == True
+                        or float(amount) < 0
                         or abs(float(amount)) == 0.0):
-                    print(f"\n {amount} is not a valid input. Please enter a positive number with no commas.")
+                    print(f"\n {amount} is not a valid input. Please enter a positive number with a maximum of two decimal places.")
                     amount = input("\n Please enter the amount of the credit: $")
 
                 filename = "transactions.txt"
