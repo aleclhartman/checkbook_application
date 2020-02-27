@@ -63,3 +63,57 @@ def menu():
             exit()
 
 menu()
+
+
+# THIS IS WHAT WAS IN YOUR CHECKBOOK.PY AT 6:53PM
+
+# ACCOUNT FOR RANDOM CHARACTERS
+# ACCOUNT FOR DEBTS LARGER THAN BALANCE
+
+        if user_choice == 2:
+            def record_debit():
+                amount = input("\n Please enter the amount of the debit: $")
+                while ("," in amount
+                        or str(int(round(float(amount)))).isnumeric() == False
+                        or float(amount) < 0.0
+                        or abs(float(amount)) == 0.0
+                        or decimal.Decimal(amount).as_tuple().exponent < -2):
+                    print(f"\n {amount} is not a valid input. Please enter a positive number with no commas and a maximum of two decimal places.")
+                    amount = input("\n Please enter the amount of the debit: $")
+
+                filename = "transactions.txt"
+
+                if path.exists(filename) == True:
+                    with open(filename, "a") as f:
+                            f.write("-" + amount + "\n")
+                else:
+                    with open(filename, "w") as f:
+                        f.write("-" + amount + "\n")
+
+            record_debit()
+
+            menu()
+
+        if user_choice == 3:
+            def record_credit():
+                amount = input("\n Please enter the amount of the credit: $")
+                while ("," in amount
+                        or str(int(round(float(amount)))).isnumeric() == False
+                        or float(amount) < 0.0
+                        or abs(float(amount)) == 0.0
+                        or decimal.Decimal(amount).as_tuple().exponent < -2):
+                    print(f"\n {amount} is not a valid input. Please enter a positive number with no commas and a maximum of two decimal places.")
+                    amount = input("\n Please enter the amount of the credit: $")
+
+                filename = "transactions.txt"
+
+                if path.exists(filename) == True:
+                    with open(filename, "a") as f:
+                            f.write(amount + "\n")
+                else:
+                    with open(filename, "w") as f:
+                        f.write(amount + "\n")
+
+            record_credit()
+
+            menu()
